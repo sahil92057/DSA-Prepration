@@ -1,0 +1,19 @@
+const func = (arr, i, dp)=>{
+    if(i===0) return arr[i]
+    if(i<0) return 0
+    if(dp[i]!==-1) return dp[i]
+    let t =arr[i]+ func(arr, i-2, dp)
+    let nt= 0+ func(arr, i-1, dp)
+    dp[i]= Math.max(t, nt);
+    return  dp[i]
+}
+
+
+
+const maxSum = ()=>{
+    arr=[2, 1, 4, 9]
+    let n = arr.length
+    let dp = new Array(n+1).fill(-1)
+    console.log(func(arr, n-1, dp))
+}
+maxSum()
