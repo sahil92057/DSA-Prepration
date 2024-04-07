@@ -1,0 +1,17 @@
+const func = (a, n, dp)=>{
+    if(n ===0) return a[n];
+    if(n <0) return 0
+    if(dp[n]!=-1) return dp[n];
+    let t = a[n]+func(a,n-2, dp);
+    let nt =0+func(a, n-1, dp);
+    dp[n]=Math.max(t, nt);
+    return dp[n];
+}
+
+
+var rob = function(nums) {
+    let n = nums.length
+    let dp = new Array(n).fill(-1)
+     return func(nums, n-1, dp)
+};
+console.log(rob([1,2,3,1]))
