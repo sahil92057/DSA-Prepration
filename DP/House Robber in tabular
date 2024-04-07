@@ -1,0 +1,15 @@
+var rob = function(nums) {
+    let n = nums.length
+    if(n===1) return nums[0]
+    let p =nums[0];
+    let p2=nums[0]
+    let maxi=nums[0]
+    for(let i =1; i<n; i++){
+         let t = nums[i]+ (i>1 ? p2 :0)
+         let nt=0+ p
+         maxi = Math.max(maxi, Math.max(t, nt))
+         p2=p
+         p=maxi
+    }
+    return maxi
+};
