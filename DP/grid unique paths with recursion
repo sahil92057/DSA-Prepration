@@ -1,0 +1,11 @@
+ const func =(m , n)=>{
+    if(m===0 && n===0) return 1;
+    if(m <0 || n<0) return 0
+    let l =  func(m-1, n);
+    let r = func(m, n-1)
+    return l+r
+ }
+var uniquePaths = function(m, n) {
+    
+   return func(m-1, n-1)
+};
