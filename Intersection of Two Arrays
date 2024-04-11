@@ -1,0 +1,9 @@
+var intersection = function(nums1, nums2) {
+    let res = new Array()
+    nums2.map((x)=>{
+        if(nums1.includes(x) && !res.includes(x)){
+            res.push(x)
+        }
+    })
+    return res
+};
