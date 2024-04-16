@@ -1,0 +1,12 @@
+var func=(a, n, i, j )=>{
+    if(i===n-1) return a[i][j];
+    let l = a[i][j] +func(a, n, i+1, j)
+    let r = a[i][j] +func(a, n, i+1, j+1)
+    return Math.min(l, r)
+    
+}
+var minimumTotal = function(triangle) {
+    let n = triangle.length;
+    return func(triangle, n, 0, 0);
+};
+console.log(minimumTotal([[-10]]))
