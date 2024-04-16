@@ -1,0 +1,16 @@
+var func=(a, n, i, j,dp)=>{
+    if(i===n-1) return a[i][j];
+    if(dp[i][j]!==-1) return dp[i][j];
+    let l = a[i][j] +func(a, n, i+1, j, dp)
+    let r = a[i][j] +func(a, n, i+1, j+1, dp)
+    return dp[i][j]=Math.min(l, r)
+    
+}
+var minimumTotal = function(triangle) {
+    let n = triangle.length;
+    let dp = new Array(n);
+    for(let i=0; i<n; i++){
+        dp[i]= new Array(n).fill(-1);
+    }
+    return func(triangle, n, 0, 0, dp);
+};
