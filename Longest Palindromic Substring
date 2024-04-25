@@ -1,0 +1,45 @@
+function checkPalindrome(string) {
+
+    // find the length of a string
+    const len = string.length;
+
+    // loop through half of the string
+    for (let i = 0; i < len / 2; i++) {
+
+        // check if first and last string are same
+        if (string[i] !== string[len - 1 - i]) {
+            return false;
+        }
+    }
+    return true
+}
+var func=(s, i, n, ans, output)=>{
+    if(i===n){
+        if(checkPalindrome(ans)){
+          output.push(ans);
+        }
+        return  ans
+    }
+    // console.log("ans", ans)
+    func(s, i+1, n, ans, output);
+    func(s, i+1, n, ans+=s[i], output);
+}
+
+var longestPalindrome = function(s) {
+    let n = s.length;
+    let output=[]
+    let ans ="";
+    let dp =new Array(n);
+    for(let i =1; i<n; i++){
+        dp[i] = new Array(n).fill(-1)
+    }
+    func(s, 1, n, ans, output);
+    let final=""
+    for(let i=0; i<output.length; i++){
+        if(output[i].length> final.length){
+            final = output[i]
+        }
+    }
+    return final
+};
+console.log(longestPalindrome("aacakacaa"))
