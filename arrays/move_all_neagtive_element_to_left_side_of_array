@@ -1,0 +1,18 @@
+const moveNeagtive = (nums)=>{
+    let n = nums.length
+    let i=0, j=1;
+    
+    while(i<n && j<n){
+        console.log("nums", nums[i])
+        while(nums[i] <0) i++;
+        if(nums[j]<0){
+            let a = nums[i];
+            nums[i]=nums[j];
+            nums[j]=a;
+        }
+        j++;
+    }
+    return nums
+}
+
+console.log(moveNeagtive([1, 2, -3, 4, -5, 6]))
