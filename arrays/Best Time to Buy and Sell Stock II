@@ -1,0 +1,14 @@
+var maxProfit = function(a) {
+    let c=a[0]
+    let m =0
+    for(let i =1; i<a.length; i++){
+        if(a[i]> a[i-1] && (a[i]-a[i-1])>0){
+            m+=a[i]-a[i-1]
+            c=a[i]
+        }
+        else if(a[i]>a[i+1] && (i+1) <a.length){
+            c=a[i]
+        }
+    }
+    return m
+};
