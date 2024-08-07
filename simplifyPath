@@ -1,0 +1,21 @@
+var simplifyPath = function(s) {
+    var arr=[]
+    let n = s.length;
+    let ans=""
+    for(let i =0; i<n; i++){
+        if(s[i]==="/") continue;
+            let temp=""
+            while(i<n && s[i]!=="/")temp+=s[i++];
+            if(temp==='.') continue;
+            else if(temp==".." ){
+               if(arr.length>=1)arr.pop();
+            }
+            else arr.push(temp)
+    }
+      while(arr.length>0){
+                 ans="/"+arr[arr.length-1]+ans
+                 arr.pop() 
+            }
+             if(ans.length===0) return "/"
+    return ans;
+};
