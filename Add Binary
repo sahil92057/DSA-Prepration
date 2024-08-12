@@ -1,0 +1,15 @@
+var addBinary = function(a, b) {
+    let m =a.length-1
+    let n =b.length-1
+    let c=0;
+    let ans=''
+    while(a[m] || b[n]|| c){
+        let sum=0
+        sum+=c;
+        if(m>=0 && a[m--]==='1') sum+=1;
+        if(n>=0 && b[n--]==='1') sum+=1;
+        ans= Math.floor(sum%2).toString()+ans;
+        c=Math.floor(sum/2);
+    }
+    return ans;
+};
