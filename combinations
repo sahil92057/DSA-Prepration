@@ -1,0 +1,16 @@
+const func = (n, k, ds, ans, start) => {
+    if (k === ds.length) {
+        ans.push([...ds]);
+        return ;
+    }
+    if(start>n) return
+    ds.push(start)
+    func(n, k, ds, ans, start+1);
+    ds.pop()
+    func(n, k, ds, ans, start+1);
+}
+var combine = function (n, k) {
+    let ans = []
+     func(n, k, [], ans,  1);
+     return ans
+};
