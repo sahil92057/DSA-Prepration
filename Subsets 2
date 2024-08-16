@@ -1,0 +1,17 @@
+const func = (nums, i, ans, ds) =>{
+     if(i===nums.length){
+        ans.push([...ds])
+        return;
+    }
+    ds.push(nums[i])
+    func(nums, i+1, ans, ds)
+    ds.pop()
+    while (i + 1 < nums.length && nums[i] === nums[i + 1]) i++;
+    func(nums, i+1, ans, ds)
+}
+var subsetsWithDup = function(nums) {
+    let ans=[]
+    nums= nums.sort((a, b)=> a-b)
+    func(nums, 0, ans, [])
+    return ans
+};
