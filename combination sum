@@ -1,0 +1,20 @@
+
+var func=(nums, i, ans, ds, n, t)=>{
+    if(i>=n || t<0) return;
+    if(t===0){
+        ans.push([...ds])
+    }
+    ds.push(nums[i])
+    func(nums, i, ans, ds , n, t-nums[i]);
+    ds.pop();
+    func(nums, i+1, ans, ds, n, t)
+}
+
+var comb = (nums, t)=>{
+    let ans =[];
+    let ds = [];
+    func(nums, 0, ans, ds, nums.length, t)
+    return ans;
+}
+
+console.log("result",comb([2, 3, 6, 7], 7))
