@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class graphDemo {
+    public:
+    void insertion (int v , int u, int dir, unordered_map<int, vector<int>> &al){
+        if(dir==0){
+          al[u].push_back(v);
+          al[v].push_back(u);
+        }
+        else{
+          al[v].push_back(u);
+        }
+    }
+    void bfsTraversal(int src,unordered_map<int, vector<int>>&al, unordered_map<int, bool>& vis){
+      queue<int> q;
+      q.push(src);
+      vis[src]=true;
+      while(!q.empty()){
+        int fn = q.front();
+         cout<<fn<<" ";
+        q.pop();
+          
+        for(auto nbr:al[fn]){
+          if(!vis[nbr]){
+            q.push(nbr);
+            vis[nbr]=true;
+          }
+        }
+      }
+      
+    }
+
+
+};
+
+
+
+int main(){
+   unordered_map<int, vector<int>>al;
+ auto g =new graphDemo();
+ g->insertion(0, 1, 0, al);
+ g->insertion(1, 2, 0, al);
+ g->insertion(1, 3, 0, al);
+ g->insertion(2, 4, 0, al);
+// g->insertion(2, 1, 0, al);
+ g->insertion(3, 5, 0, al);
+ g->insertion(3, 5, 0, al);
+ g->insertion(6, 7, 0, al);
+// g->insertion(3, 1, 0, al);
+ 
+for(auto it: al){
+  cout<<it.first<<" = {";
+  for(auto i:it.second){
+    cout<<" "<<i; 
+  }
+  cout<<" }"<<endl;
+}
+unordered_map<int, bool> vis;
+for(int i =0; i<7; i++){
+  
+  if(vis[i]==false) g->bfsTraversal(i, al, vis);
+}
+ return 0;  
+}
